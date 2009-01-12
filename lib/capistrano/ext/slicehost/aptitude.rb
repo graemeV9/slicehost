@@ -85,8 +85,8 @@ namespace :aptitude do
   task :setup, :roles => :app do
     update
 		language = ENV["LANG"] || "en_GB.UTF-8"
-    sudo "locale-gen language"
-    sudo "/usr/sbin/update-locale LANG=#{language}"
+    # sudo "locale-gen language"
+    # sudo "/usr/sbin/update-locale LANG=#{language}"
     safe_upgrade
     full_upgrade
     sudo "aptitude install -y build-essential"
