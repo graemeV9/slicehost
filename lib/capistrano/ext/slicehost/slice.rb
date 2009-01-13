@@ -3,5 +3,6 @@ namespace :slice do
     ssh.setup
     iptables.configure
     aptitude.setup
+    vim.setup
   end
 end
