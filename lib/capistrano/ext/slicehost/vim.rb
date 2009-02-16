@@ -1,6 +1,4 @@
-desc "set up vim on the slice"
-namespace :vim do
-  
+namespace :vim do  
   desc "setup vim on slicehost" 
   task :setup, :roles => :files do
     install
