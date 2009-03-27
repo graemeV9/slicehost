@@ -58,7 +58,7 @@ namespace :aptitude do
   DESC
   task :install, :roles => :app do
     package = Capistrano::CLI.ui.ask("Which package should we install: ")
-    sudo "aptitude install #{package}"
+    sudo "aptitude install -y #{package}"
   end
 
   desc <<-DESC
@@ -74,10 +74,10 @@ namespace :aptitude do
     Updates software packages and creates "a solid base for the 'meat' of the \
     server". This task should be run only once when you are first setting up your \
     new slice.
-		
-		For set another language different from en_GB.UTF-8, just set the LANG \
-		environment	variable to your favorite language.
-		Ex. LANG="gl_ES.UTF-8"; cap aptitude:setup
+
+    For set another language different from en_GB.UTF-8, just set the LANG \
+    environment variable to your favorite language.
+    Ex. LANG="gl_ES.UTF-8"; cap aptitude:setup
 
     See "Update", "locales", "Upgrade" and "build essentials" sections on \
     http://articles.slicehost.com/2007/11/6/ubuntu-gutsy-setup-page-2

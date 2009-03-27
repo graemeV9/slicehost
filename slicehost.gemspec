@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
+<<<<<<< HEAD:slicehost.gemspec
   s.name = %q{slicehost}
   s.version = "0.0.3"
 
@@ -29,4 +30,17 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<capistrano>, ["> 2.5.0"])
   end
+=======
+  s.name     = "slicehost"
+  s.version  = "0.0.2.5"
+  s.date     = "2009-03-17"
+  s.summary  = "Capistrano recipes for setting up and deploying to Slicehost"
+  s.email    = "josh@joshpeek.com"
+  s.homepage = "http://github.com/josh/slicehost"
+  s.description = "Slicehost Capistrano recipes for configuring and managing your slice."
+  s.has_rdoc = false
+  s.authors  = ["Joshua Peek"]
+  s.files    = Dir["README", "MIT-LICENSE", "lib/capistrano/ext/**/*"]
+  s.add_dependency("capistrano", ["> 2.5.0"])
+>>>>>>> 485b68f01a0473f2b71cf41bb0bc13b885903f34:slicehost.gemspec
 end
