@@ -36,7 +36,7 @@ namespace :ruby do
   end
 
   desc "Install Phusion Passenger"
-  task :install_passenger, :roles => :app do
+  task :install_passenger_apache, :roles => :app do
     sudo "apt-get install apache2-mpm-prefork"
     sudo "aptitude install -y apache2-prefork-dev"
     sudo "/opt/#{ruby_enterprise_version}/bin/ruby /opt/#{ruby_enterprise_version}/bin/gem install passenger rake --no-rdoc --no-ri"

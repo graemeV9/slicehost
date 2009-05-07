@@ -51,6 +51,13 @@ namespace :nginx do
     sudo "ln -s /etc/nginx/sites-available/#{site} /etc/nginx/sites-enabled/#{site}"
     reload
   end
+  
+  desc "Upload Nginx virtual host"
+  task :upload_vhost, :roles => :web do
+    put render("vhost_nginx", binding), application
+    sudo "mv #{application} /etc/nginx/sites-available/#{application}"
+    reload
+  end
 
   desc "Install Nginx"
   task :install, :roles => :web do
