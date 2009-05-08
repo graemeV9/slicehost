@@ -56,7 +56,6 @@ namespace :nginx do
   task :upload_vhost, :roles => :web do
     put render("vhost_nginx", binding), application
     sudo "mv #{application} /etc/nginx/sites-available/#{application}"
-    reload
   end
 
   desc "Install Nginx"
