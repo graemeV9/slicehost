@@ -2,10 +2,7 @@ server {
     listen 80;
     server_name <%= domain %>;
     
-    location / {
-      root <%= current_path %>/public;
-      index index.html;
-    }
+    root <%= current_path %>/public;
         
     passenger_enabled on;
 }
