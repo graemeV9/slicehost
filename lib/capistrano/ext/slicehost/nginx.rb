@@ -2,6 +2,8 @@ set(:domain) do
   Capistrano::CLI.ui.ask "Which domain should we use? "
 end
 
+set :nginx_path, "/opt/nginx"
+
 namespace :nginx do
   desc "Restarts Nginx webserver"
   task :restart, :roles => :web do
@@ -30,36 +32,39 @@ namespace :nginx do
 
   desc "List enabled Nginx sites"
   task :enabled_sites, :roles => :web do
-    run "ls /etc/nginx/sites-enabled"
+    run "ls #{nginx_path}/sites-enabled"
   end
 
   desc "List available Nginx sites"
   task :available_sites, :roles => :web do
-    run "ls /etc/nginx/sites-available"
+    run "ls #{nginx_path}/sites-available"
   end
 
   desc "Disable Nginx site"
   task :disable_site, :roles => :web do
     site = Capistrano::CLI.ui.ask("Which site should we disable: ")
-    sudo "rm /etc/nginx/sites-enabled/#{site}"
+    sudo "rm #{nginx_path}/sites-enabled/#{site}"
     reload
   end
 
   desc "Enable Nginx site"
   task :enable_site, :roles => :web do
     site = Capistrano::CLI.ui.ask("Which site should we enable: ")
-    sudo "ln -s /etc/nginx/sites-available/#{site} /etc/nginx/sites-enabled/#{site}"
+    sudo "ln -s #{nginx_path}/sites-available/#{site} #{nginx_path}/sites-enabled/#{site}"
     reload
   end
   
   desc "Upload Nginx virtual host"
   task :upload_vhost, :roles => :web do
     put render("vhost_nginx", binding), application
-    sudo "mv #{application} /etc/nginx/sites-available/#{application}"
+    sudo "mv #{application} #{nginx_path}/sites-available/#{application}"
   end
 
   desc "Install Nginx"
   task :install, :roles => :web do
-     sudo "aptitude install -y nginx"
+     sudo "passenger-install-nginx-module --auto --auto-download --prefix #{nginx_path} "
+     sudo "mkdir #{nginx_path}/sites-available"
+     sudo "mkdir #{nginx_path}/sites-enabled"
   end
+
 end
