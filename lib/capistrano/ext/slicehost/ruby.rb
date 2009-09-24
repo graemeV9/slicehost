@@ -23,6 +23,11 @@ namespace :ruby do
     # sudo "ln -s /usr/bin/irb1.8 /usr/bin/irb"
   end
 
+  desc "Install Ruby 1.9"
+  task :setup_19, :roles => :app do
+    sudo "aptitude install -y ruby1.9.1-dev libruby1.9.1 ruby1.9.1 ri1.9.1 rdoc1.9.1 irb1.9.1 libreadline-ruby1.9.1  libopenssl-ruby1.9.1 sqlite3 libsqlite3-ruby1.9.1"
+  end
+  
   desc "Install Ruby Enterpise Edition"
   task :install_enterprise, :roles => :app do
     sudo "aptitude install -y libssl-dev"
