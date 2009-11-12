@@ -1,6 +1,8 @@
 Slicehost Recipes
 =================
 
+Note:  This is a fork of the original slicehost Capistrano recipies by Joshua Peek
+
 Slicehost Capistrano recipes for configuring and managing your slice. Require Capistrano >2.5.0
 
 Setup
