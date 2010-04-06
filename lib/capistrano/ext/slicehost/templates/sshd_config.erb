@@ -56,14 +56,14 @@ PasswordAuthentication no
 #KerberosTicketCleanup yes
 
 # GSSAPI options
-GSSAPIAuthentication no
+#GSSAPIAuthentication no
 #GSSAPICleanupCredentials yes
 
-X11Forwarding no
+X11Forwarding yes
 X11DisplayOffset 10
 PrintMotd no
 PrintLastLog yes
-KeepAlive yes
+TCPKeepAlive yes
 #UseLogin no
 
 #MaxStartups 10:30:60
@@ -74,8 +74,6 @@ AcceptEnv LANG LC_*
 
 Subsystem sftp /usr/lib/openssh/sftp-server
 
-UsePAM no
-
-UseDNS no
+UsePAM yes
 
 AllowUsers <%= user %>

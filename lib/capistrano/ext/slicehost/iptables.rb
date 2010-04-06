@@ -17,5 +17,8 @@ namespace :iptables do
       )
       sudo "mv interfaces /etc/network/interfaces"
     end
+    
+    sudo "iptables-restore < /etc/iptables.test.rules"
+    sudo "iptables-save > /etc/iptables.up.rules"
   end
 end

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = "bcalloway-slicehost"
-  s.version  = "0.0.3.0"
+  s.version  = "0.4.0"
   s.date     = "2009-11-12"
   s.summary  = "Fork of original Capistrano recipes for setting up and deploying to Slicehost"
   s.email    = "brandon@brandoncalloway.com"
