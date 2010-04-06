@@ -12,7 +12,7 @@ The recipes are designed to work stand alone apart from the standard set of Capi
 
   require 'capistrano/ext/slicehost' in your deploy.rb file
 
-Slice setup recipies 
+Slice setup recipes 
 ====================
 
 Commonly used setup recipies. Check the source for more.
@@ -81,6 +81,83 @@ Reload apache
 
 Force reload apache
 	cap apache:force_reload
+
+All Recipes
+===================
+cap apache:available_modules      # List available Apache modules
+cap apache:available_sites        # List available Apache sites
+cap apache:disable_module         # Disable Apache module
+cap apache:disable_site           # Disable Apache site
+cap apache:enable_module          # Enable Apache module
+cap apache:enable_site            # Enable Apache site
+cap apache:enabled_modules        # List enabled Apache modules
+cap apache:enabled_sites          # List enabled Apache sites
+cap apache:force_reload           # Force reload Apache webserver
+cap apache:install                # Install Apache
+cap apache:reload                 # Reload Apache webserver
+cap apache:restart                # Restarts Apache webserver
+cap apache:start                  # Starts Apache webserver
+cap apache:stop                   # Stops Apache webserver
+cap apache:upload_vhost           # Upload Apache virtual host
+cap aptitude:full_upgrade         # Upgrades your installed software packages.
+cap aptitude:install              # Installs a software package via aptitude.
+cap aptitude:safe_upgrade         # Upgrades your installed software packages.
+cap aptitude:setup                # Updates software packages and creates a solid base for the server
+cap aptitude:uninstall            # Uninstalls a software package via aptitude.
+cap aptitude:update               # Updates your software package list.
+cap aptitude:upgrade              # Alias for 'aptitude:safe_upgrade'
+cap disk:free                     # Show the amount of free disk space.
+cap disk:memory                   # Show free memory
+cap gems:install                  # Install a gem on the remote server
+cap gems:install_rubygems         # Install the gem package system
+cap gems:list                     # List gems on remote server
+cap gems:uninstall                # Uninstall a gem on the remote server
+cap gems:update                   # Update gems on remote server
+cap gems:update_system            # Update gem system on remote server
+cap git:install                   # Install git
+cap iptables:configure            # Harden iptables configuration.
+cap mysql:export                  # Export MySQL database
+cap mysql:import                  # Import MySQL database
+cap mysql:install                 # Install MySQL
+cap mysql:restart                 # Restarts MySQL database server
+cap mysql:start                   # Starts MySQL database server
+cap mysql:stop                    # Stops MySQL database server
+cap nginx:available_sites         # List available Nginx sites
+cap nginx:disable_site            # Disable Nginx site
+cap nginx:enable_site             # Enable Nginx site
+cap nginx:enabled_sites           # List enabled Nginx sites
+cap nginx:force_reload            # Force reload Nginx webserver
+cap nginx:install                 # Install Nginx
+cap nginx:reload                  # Reload Nginx webserver
+cap nginx:restart                 # Restarts Nginx webserver
+cap nginx:start                   # Starts Nginx webserver
+cap nginx:stop                    # Stops Nginx webserver
+cap nginx:upload_vhost            # Upload Nginx virtual host
+cap postgresql:export             # Export PostgreSQL database
+cap postgresql:import             # Import PostgreSQL database
+cap postgresql:install            # Install PostgreSQL
+cap postgresql:restart            # Restarts PostgreSQL database server
+cap postgresql:start              # Starts PostgreSQL database server
+cap postgresql:stop               # Stops PostgreSQL database server
+cap prod                          # Set the target stage to `prod'.
+cap profile:configure             # Setup .bashrc the way we like it
+cap ruby:install_enterprise       # Install Ruby Enterpise Edition
+cap ruby:install_passenger_apache # Install Phusion Passenger
+cap ruby:setup_18                 # Install Ruby 1.8
+cap ruby:setup_19                 # Install Ruby 1.9
+cap shell                         # Begin an interactive Capistrano session.
+cap slice:configure               # set up ssh, iptables, aptitude and vim
+cap ssh:configure_sshd            # Configure SSH daemon with more secure setings
+cap ssh:reload                    # Reload SSH service.
+cap ssh:setup                     # Setup SSH on the gateway host.
+cap ssh:upload_keys               # Uploads your local public SSH keys 
+cap staging                       # Set the target stage to `staging'.
+cap useradd:check_sudoers         # Check that %sudo entry exists in the /etc/sudoers file
+cap useradd:setup                 # Interactive adduser
+cap vim:install                   # install vim from aptitude
+cap vim:load_vimrc                # load up a simple .vimrc
+cap vim:setup                     # setup vim on slicehost
+
 
 
 Contributors
