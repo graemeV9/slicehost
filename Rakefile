@@ -1,12 +1,12 @@
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name = "slicehost"
+    s.name = "bcalloway-slicehost"
     s.summary = "Capistrano recipes for setting up and deploying to Slicehost"
-    s.email = "josh@joshpeek.com"
+    s.email = "josh@joshpeek.com, brandon@brandoncalloway.com"
     s.homepage = "http://github.com/josh/slicehost"
     s.description = "Slicehost Capistrano recipes for configuring and managing your slice."
-    s.authors = ["Joshua Peek"]
+    s.authors = ["Joshua Peek, Brandon Calloway"]
     
     s.has_rdoc = false
     s.files    = Dir["README", "MIT-LICENSE", "lib/capistrano/ext/**/*"]
