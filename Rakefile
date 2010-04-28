@@ -12,6 +12,7 @@ begin
     s.files    = Dir["README", "MIT-LICENSE", "lib/capistrano/ext/**/*"]
     s.add_dependency("capistrano", ["> 2.5.0"])
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
