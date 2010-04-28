@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
      "lib/capistrano/ext/slicehost/useradd.rb",
      "lib/capistrano/ext/slicehost/vim.rb"
   ]
-  s.homepage = %q{http://github.com/josh/slicehost}
+  s.homepage = %q{http://github.com/bcalloway/slicehost}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
