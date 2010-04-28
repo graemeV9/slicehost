@@ -6,8 +6,8 @@ namespace :iptables do
     http://articles.slicehost.com/2008/4/25/ubuntu-hardy-setup-page-1
   DESC
   task :configure, :roles => :gateway do
-    put render("iptables", binding), "iptables.up.rules"
-    sudo "mv iptables.up.rules /etc/iptables.up.rules"
+    put render("iptables", binding), "iptables.test.rules"
+    sudo "mv iptables.test.rules /etc/iptables.test.rules"
 
     if capture("cat /etc/network/interfaces").grep(/iptables/).empty?
       run %(cat /etc/network/interfaces |
