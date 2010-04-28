@@ -4,7 +4,7 @@ begin
     s.name = "bcalloway-slicehost"
     s.summary = "Capistrano recipes for setting up and deploying to Slicehost"
     s.email = "josh@joshpeek.com, brandon@brandoncalloway.com"
-    s.homepage = "http://github.com/josh/slicehost"
+    s.homepage = "http://github.com/bcalloway/slicehost"
     s.description = "Slicehost Capistrano recipes for configuring and managing your slice."
     s.authors = ["Joshua Peek, Brandon Calloway"]
     
