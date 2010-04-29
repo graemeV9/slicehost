@@ -14,6 +14,8 @@
 #  You can modify this to only allow certain traffic
 -A OUTPUT -j ACCEPT
 
+# Allows connection to iStat
+-A INPUT -p tcp -m tcp --dport 5109 -j ACCEPT
 
 # Allows HTTP and HTTPS connections from anywhere (the normal ports for websites)
 -A INPUT -p tcp --dport 80 -j ACCEPT
