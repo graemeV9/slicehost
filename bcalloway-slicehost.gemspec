@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bcalloway-slicehost}
-  s.version = "0.5.2"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joshua Peek, Brandon Calloway"]
-  s.date = %q{2010-04-28}
+  s.date = %q{2010-04-29}
   s.description = %q{Slicehost Capistrano recipes for configuring and managing your slice.}
   s.email = %q{josh@joshpeek.com, brandon@brandoncalloway.com}
   s.extra_rdoc_files = [
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
      "lib/capistrano/ext/slicehost/gems.rb",
      "lib/capistrano/ext/slicehost/git.rb",
      "lib/capistrano/ext/slicehost/iptables.rb",
+     "lib/capistrano/ext/slicehost/istat.rb",
      "lib/capistrano/ext/slicehost/mysql.rb",
      "lib/capistrano/ext/slicehost/nginx.rb",
      "lib/capistrano/ext/slicehost/postgresql.rb",
@@ -35,6 +36,7 @@ Gem::Specification.new do |s|
      "lib/capistrano/ext/slicehost/ssh.rb",
      "lib/capistrano/ext/slicehost/templates/bashrc.erb",
      "lib/capistrano/ext/slicehost/templates/iptables.erb",
+     "lib/capistrano/ext/slicehost/templates/istatdlauncher.erb",
      "lib/capistrano/ext/slicehost/templates/mydircolors.erb",
      "lib/capistrano/ext/slicehost/templates/nanorc.erb",
      "lib/capistrano/ext/slicehost/templates/passenger.conf.erb",
