@@ -116,6 +116,7 @@ cap gems:update                   # Update gems on remote server
 cap gems:update_system            # Update gem system on remote server
 cap git:install                   # Install git
 cap iptables:configure            # Harden iptables configuration.
+cap istat:setup                   # Setup istat daemon for monitoring with iStat for iPhone.
 cap mysql:export                  # Export MySQL database
 cap mysql:import                  # Import MySQL database
 cap mysql:install                 # Install MySQL
