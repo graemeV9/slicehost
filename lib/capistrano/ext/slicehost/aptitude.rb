@@ -71,7 +71,7 @@ namespace :aptitude do
   end
 
   desc <<-DESC
-    Updates software packages and creates "a solid base for the 'meat' of the \
+    Installs aptitude, updates software packages and creates "a solid base for the 'meat' of the \
     server". This task should be run only once when you are first setting up your \
     new slice.
 
@@ -89,6 +89,7 @@ namespace :aptitude do
     # sudo "/usr/sbin/update-locale LANG=#{language}"
     safe_upgrade
     full_upgrade
+    sudo "apt-get install -y aptitude"
     sudo "aptitude install -y build-essential"
   end
 end

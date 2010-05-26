@@ -12,6 +12,12 @@ The recipes are designed to work stand alone apart from the standard set of Capi
 
   require 'capistrano/ext/slicehost' in your deploy.rb file
 
+Note
+===================
+You  may need to install mysql manually:
+sudo "aptitude install -y mysql-server mysql-client libmysqlclient15-dev"
+sudo "aptitude install -y libmysql-ruby1.8"
+
 Slice setup recipes 
 ====================
 
