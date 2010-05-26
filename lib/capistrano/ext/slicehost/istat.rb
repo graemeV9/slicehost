@@ -12,7 +12,7 @@ namespace :istat do
     sudo "chown istat /var/run/istat"
     sudo "/usr/local/bin/istatd -d"
     put render("istatdlauncher", binding), "istatdlauncher"
-    sudo "mv istatdlauncher /etc/init.d/istatdlauncer"
+    sudo "mv istatdlauncher /etc/init.d/istatdlauncher"
     sudo "chmod +x /etc/init.d/istatdlauncher"
     sudo "update-rc.d istatdlauncher defaults"
   end
