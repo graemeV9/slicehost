@@ -3,6 +3,16 @@ set(:domain) do
 end
 
 namespace :apache do
+  desc "Install and setup Apache, create vhost container, and enable site"
+  task :setup do
+    install
+    sudo "sudo a2enmod rewrite"
+    upload_vhost
+    sudo "sudo a2ensite #{application}"
+    reload
+    restart
+  end
+  
   desc "Restarts Apache webserver"
   task :restart, :roles => :web do
     sudo "/etc/init.d/apache2 restart"

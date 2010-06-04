@@ -7,6 +7,50 @@ Slicehost Capistrano recipes for configuring and managing your slice. Require Ca
 *Requirements*
 * Ubuntu 9.10 or newer
 * Root access
+* Capistrano
+
+h3. Sample Capitrano Deploy Recipe
+
+The following is a sample portion of a Capistrano deploy recipe.  All the following options need to be set, although you might have some additions depending on your specific setup.
+
+<pre><code>
+  set :project, 'myproject' # The name of the project in your GitHub repo 
+
+  set :github_user, "username" # Your GitHub username
+  set :domain_name, "mydomain.com" # should be something like mydomain.com
+  set :user, 'username' # server username
+  set :domain, 'XXX.XXX.XX.XX' # server IP address
+  set :domain_prefix, "mydomain" # the production domain name prefix (no www. or .com)
+  set :domain_suffix, "com" # Is this a .com, .net, or .org? (just use the 2 letters, no dot)
+
+  default_run_options[:pty] = true
+  ssh_options[:forward_agent] = true
+  ssh_options[:port] = 22 # or change this to an alternate port if you want
+
+  set :repository,  "git@github.com:#{github_user}/#{project}.git" #GitHub clone URL
+  set :scm, "git"
+  set :scm_passphrase, "" # This is the passphrase (if any) for the ssh key on the server deployed to
+  set :branch, "master" # or whatever branch you deploy from
+  set :scm_verbose, true
+  set :subdomain, "#{project}.#{domain_name}"
+  set :applicationdir, "/home/#{project}" # or whatever directory you want to deploy to
+
+  # Don't change this stuff, but you may want to set shared files at the end of the file ##################
+  # deploy config
+  set :deploy_to, applicationdir
+  set :deploy_via, :remote_cache
+
+  # roles (servers)
+  role :app, domain
+  role :web, domain
+  role :files, domain
+  role :gateway, domain
+  role :gateway_as_root, domain
+  role :db,  domain, :primary => true
+  
+  #################################
+  # All your other deploy settings below here.
+</code></pre>
 
 h3. Setup
 
@@ -29,17 +73,17 @@ First, setup a normal user. Be sure your capistrano deploy recipe is set to use 
 
 Now, change your capistrano deploy recipe to use the user you just created, and continue.
 
-The following task does this:
+<pre><code>
+  cap slice:configure
+</code><pre>
+  
+This task performs the following:
 * Sets-up and secures ssh
 * Creates a .bash_profile with helpful shortcuts and colors and creates a nano editor profile
 * Sets-up and secures the system with iptables
 * Installs and updates aptitude, and provisions the server with essential services
 * Sets-up and installs vim
 * Sets-up and installs imagemagick
-
-<pre><code>
-  cap slice:configure
-</code><pre>
 
 Next, we install a full Ruby stack:<br />
 * Apache

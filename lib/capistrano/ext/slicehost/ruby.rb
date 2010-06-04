@@ -16,16 +16,21 @@ namespace :ruby do
   desc "Install Ruby 1.8"
   task :setup_18, :roles => :app do
     sudo "aptitude install -y ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 libreadline-ruby1.8 libruby1.8 libopenssl-ruby sqlite3 libsqlite3-ruby1.8"
-
-    # sudo "ln -s /usr/bin/ruby1.8 /usr/bin/ruby"
-    # sudo "ln -s /usr/bin/ri1.8 /usr/bin/ri"
-    # sudo "ln -s /usr/bin/rdoc1.8 /usr/bin/rdoc"
-    # sudo "ln -s /usr/bin/irb1.8 /usr/bin/irb"
+    sudo "ln -s /usr/bin/ruby1.8 /usr/bin/ruby"
+    sudo "ln -s /usr/bin/ri1.8 /usr/bin/ri"
+    sudo "ln -s /usr/bin/rdoc1.8 /usr/bin/rdoc"
+    sudo "ln -s /usr/bin/irb1.8 /usr/bin/irb"
   end
 
   desc "Install Ruby 1.9"
   task :setup_19, :roles => :app do
-    sudo "aptitude install -y ruby1.9.1-dev libruby1.9.1 ruby1.9.1 ri1.9.1 rdoc1.9.1 irb1.9.1 libreadline-ruby1.9.1  libopenssl-ruby1.9.1 sqlite3 libsqlite3-ruby1.9.1"
+    sudo "aptitude -q -y install libc6-dev libssl-dev libmysql++-dev libsqlite3-dev make build-essential libssl-dev libreadline5-dev zlib1g-dev"
+    run "wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.1-p243.tar.gz"
+    run "tar zxvf ruby-1.9.1-p243.tar.gz"
+    run "cd ruby-1.9.1-p243"
+    run "./configure"
+    run "make"
+    sudo "make install"
   end
   
   desc "Install Ruby Enterpise Edition"
