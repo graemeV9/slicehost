@@ -8,6 +8,15 @@ namespace :slice do
     vim.setup
     imagemagick.install
   end
+  
+  desc "Provision the server with a full Rails stack"
+  task :provision do
+    apache.install
+    ruby.setup_18
+    gems.install_rubygems
+    ruby.install_passenger_apache
+    git.install
+  end
 end
 
 namespace :imagemagick do

@@ -1,95 +1,178 @@
-Slicehost Recipes
-=================
+h1. Slicehost Recipes
 
 Note:  This is a fork of the original slicehost Capistrano recipies by Joshua Peek
 
-Slicehost Capistrano recipes for configuring and managing your slice. Require Capistrano >2.5.0
+Slicehost Capistrano recipes for configuring and managing your slice. Require Capistrano >2.5.0.
 
-Setup
-=======
+*Requirements*
+* Ubuntu 9.10 or newer
+* Root access
 
-The recipes are designed to work stand alone apart from the standard set of Capistrano deploy recipes.
+h3. Setup
 
-  require 'capistrano/ext/slicehost' in your deploy.rb file
+In config/deploy.rb:
+<pre><code>
+  require 'capistrano/ext/slicehost'
+</code></pre>
 
-Note
-===================
-You  may need to install mysql manually:
-sudo "aptitude install -y mysql-server mysql-client libmysqlclient15-dev"
-sudo "aptitude install -y libmysql-ruby1.8"
+In your project root, type the following to see a full list of commands:
+<pre><code>
+  cap -T
+</code></pre>
 
-Slice setup recipes 
-====================
+h3. Usage
 
-Commonly used setup recipies. Check the source for more.
+First, setup a normal user. Be sure your capistrano deploy recipe is set to use the root user.
+<pre><code>
+  cap useradd:setup
+</code><pre>
+
+Now, change your capistrano deploy recipe to use the user you just created, and continue.
+
+The following task does this:
+* Sets-up and secures ssh
+* Creates a .bash_profile with helpful shortcuts and colors and creates a nano editor profile
+* Sets-up and secures the system with iptables
+* Installs and updates aptitude, and provisions the server with essential services
+* Sets-up and installs vim
+* Sets-up and installs imagemagick
+
+<pre><code>
+  cap slice:configure
+</code><pre>
+
+Next, we install a full Ruby stack:<br />
+* Apache
+* Ruby
+* RubyGems
+* Passenger
+* Git
+<pre><code>
+  cap slice:provision
+</code><pre>
+
+Now install Rails (it will prompt for what gem you want to install)
+<pre><code>
+  cap gems:install
+</code><pre>
+  
+You will need to ssh into the server in order to setup mysql and postfix:  
+<pre><code>
+  sudo aptitude install -y mysql-server mysql-client libmysqlclient15-dev
+  sudo aptitude install -y libmysql-ruby1.8
+  sudo aptitude install postfix telnet heirloom-mailx
+</code></pre>
+
+For more information on installing Postfix, see this: "http://articles.slicehost.com/2008/7/29/postfix-installation":http://articles.slicehost.com/2008/7/29/postfix-installation
+
+That should be it for a basic, Rails server.
+
+h3. Slice setup recipes 
+
+Commonly used setup recipes. Check the source for more.
 
 Setup ssh, iptables and aptitude
+<pre><code>
 	cap slice:configure
-
-Setup mysql
-	cap mysql:install
+</code></pre>
 
 Install Apache
+<pre><code>
 	cap apache:install
+</code></pre>
 
 Install ruby 1.8
+<pre><code>
 	cap ruby:setup_18
+</code></pre>
 
 Install ruby enterprise
+<pre><code>
 	cap ruby:install_enterprise
+</code></pre>
 
 Install ruby gems
+<pre><code>
 	cap gems:install_rubygems
+</code></pre>
 
 Install passenger
+<pre><code>
 	cap ruby:install_passenger
+</code></pre>
 
 Upload vhost template
+<pre><code>
 	cap apache:upload_vhost
+</code></pre>
 
 Install git
+<pre><code>
 	cap git:install
+</code></pre>
 
-Maintenance recipies
-====================
+h3. Maintenance recipes
 
-Commonly used maitenance recipies. Check the source for more.
+Commonly used maintenance recipes. Check the source for more.
 
 Show disk space
+<pre><code>
 	cap disk:free
+</code></pre>
 
 Show free memory
+<pre><code>
 	cap disk:memory
+</code></pre>
 
 Update aptitude
+<pre><code>
 	cap aptitude:update
+</code></pre>
 
 Upgrade aptitude
+<pre><code>
 	cap aptitude:upgrade
+</code></pre>
 
 Install package (it will ask you which)
+<pre><code>
 	cap aptitude:install
+</code></pre>
 
 Reload SSH
+<pre><code>
 	cap ssh:reload
+</code></pre>
 
 Install a gem (it will ask you which)
+<pre><code>
 	cap gems:intall
+</code></pre>
 
 List gems
+<pre><code>
 	cap gems:list
+</code></pre>
 
 Restart apache
+<pre><code>
 	cap apache:restart
+</code></pre>
 
 Reload apache
+<pre><code>
 	cap apache:reload
+</code></pre>
 
 Force reload apache
+<pre><code>
 	cap apache:force_reload
+</code></pre>
 
-All Recipes
-===================
+h3. All Recipes
+
+<pre><code>
 cap apache:available_modules      # List available Apache modules
 cap apache:available_sites        # List available Apache sites
 cap apache:disable_module         # Disable Apache module
@@ -164,12 +247,9 @@ cap useradd:setup                 # Interactive adduser
 cap vim:install                   # install vim from aptitude
 cap vim:load_vimrc                # load up a simple .vimrc
 cap vim:setup                     # setup vim on slicehost
+</code></pre>
 
-
-
-Contributors
-============
-
+*Contributors*
 * Oleg Zhurbiy
 * Thomas Balthazar
 * Fran Diéguez
