@@ -8,10 +8,6 @@ set :ruby_enterprise_version do
   "#{ruby_enterprise_url[/(ruby-enterprise.*)(.tar.gz)/, 1]}"
 end
 
-set :passenger_version do
-  capture("gem list passenger$ -r").gsub(/[\n|\s|passenger|(|)]/,"")
-end
-
 namespace :ruby do
   desc "Install Ruby 1.8"
   task :setup_18, :roles => :app do
@@ -49,8 +45,8 @@ namespace :ruby do
   task :install_passenger_apache, :roles => :app do
     sudo "apt-get install apache2-mpm-prefork"
     sudo "aptitude install -y apache2-prefork-dev"
-    sudo "/opt/#{ruby_enterprise_version}/bin/ruby /opt/#{ruby_enterprise_version}/bin/gem install passenger rake --no-rdoc --no-ri"
-    sudo "PATH='/opt/#{ruby_enterprise_version}/bin/':\$PATH /opt/#{ruby_enterprise_version}/bin/ruby /opt/#{ruby_enterprise_version}/bin/passenger-install-apache2-module --auto"
+    sudo "gem install passenger -v #{passenger_version}"
+    sudo "passenger-install-apache2-module --auto"
 
     put render("passenger.load", binding), "/home/#{user}/passenger.load"
     put render("passenger.conf", binding), "/home/#{user}/passenger.conf"

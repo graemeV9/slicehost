@@ -6,6 +6,6 @@
   DocumentRoot <%= current_path %>/public
   
   RewriteEngine on
-  RewriteCond %{HTTP_HOST} ^www\.#{domain_prefix}\.#{domain_suffix}$ [NC]
-  RewriteRule ^(.*)$ http://#{domain_prefix}.#{domain_suffix}$1 [L,R=301]
+  RewriteCond %{HTTP_HOST} ^www\.<%= domain_prefix %>\.<%= domain_suffix %>$ [NC]
+  RewriteRule ^(.*)$ http://<%= domain_prefix %>.<%= domain_suffix %>$1 [L,R=301]
 </VirtualHost>

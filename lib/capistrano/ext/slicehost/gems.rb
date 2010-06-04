@@ -3,7 +3,7 @@ namespace :gems do
   task :install_rubygems, :roles => :app do
     rubygems_url = "http://rubyforge.org/" + Net::HTTP.get( URI.parse('http://rubyforge.org/frs/?group_id=126') ).scan(/frs\/.*\.tgz/).first.split('"')[0]
     rubygems_version = rubygems_url[/(rubygems.*)(.tgz)/, 1]
-    run "test ! -f /usr/bin/gem"
+    #run "test ! -f /usr/bin/gem"
     run "wget -q #{rubygems_url}"
     run "tar xzvf #{rubygems_version}.tgz"
     run "rm #{rubygems_version}.tgz"

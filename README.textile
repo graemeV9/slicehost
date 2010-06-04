@@ -22,6 +22,7 @@ The following is a sample portion of a Capistrano deploy recipe.  All the follow
   set :domain, 'XXX.XXX.XX.XX' # server IP address
   set :domain_prefix, "mydomain" # the production domain name prefix (no www. or .com)
   set :domain_suffix, "com" # Is this a .com, .net, or .org? (just use the 2 letters, no dot)
+  set :passenger_version, "2.2.14"
 
   default_run_options[:pty] = true
   ssh_options[:forward_agent] = true
@@ -33,6 +34,7 @@ The following is a sample portion of a Capistrano deploy recipe.  All the follow
   set :branch, "master" # or whatever branch you deploy from
   set :scm_verbose, true
   set :subdomain, "#{project}.#{domain_name}"
+  set :application, project
   set :applicationdir, "/home/#{project}" # or whatever directory you want to deploy to
 
   # Don't change this stuff, but you may want to set shared files at the end of the file ##################
@@ -87,7 +89,7 @@ This task performs the following:
 
 Next, we install a full Ruby stack:<br />
 * Apache
-* Ruby
+* Ruby1.8
 * RubyGems
 * Passenger
 * Git
@@ -95,15 +97,16 @@ Next, we install a full Ruby stack:<br />
   cap slice:provision
 </code><pre>
 
-Now install Rails (it will prompt for what gem you want to install)
+_Note: if you choose to go back and install a Ruby verison other than 1.8.x, you will need to reinstall Passenger_
+
+Now install Rails (it will prompt for what gem you want to install, in this case, type "rails")
 <pre><code>
   cap gems:install
 </code><pre>
   
 You will need to ssh into the server in order to setup mysql and postfix:  
 <pre><code>
-  sudo aptitude install -y mysql-server mysql-client libmysqlclient15-dev
-  sudo aptitude install -y libmysql-ruby1.8
+  sudo aptitude install -y mysql-server mysql-client libmysqlclient15-dev libmysql-ruby1.8
   sudo aptitude install postfix telnet heirloom-mailx
 </code></pre>
 

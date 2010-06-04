@@ -90,6 +90,7 @@ namespace :apache do
   task :upload_vhost, :roles => :web do
     put render("vhost", binding), application
     sudo "mv #{application} /etc/apache2/sites-available/#{application}"
+    sudo "chown root:root /etc/apache2/sites-available/#{application}"
   end
 
   desc "Install Apache"
