@@ -13,7 +13,7 @@ namespace :ssh do
     then reloads the SSH service to finalize the changes.
   DESC
   task :setup, :roles => :gateway do
-    upload_keys
+    #upload_keys
     configure_sshd
     reload
   end

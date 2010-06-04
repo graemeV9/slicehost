@@ -6,8 +6,8 @@ namespace :iptables do
     http://articles.slicehost.com/2008/4/25/ubuntu-hardy-setup-page-1
   DESC
   task :configure, :roles => :gateway do
-    put render("iptables", binding), "iptables.test.rules"
-    sudo "mv iptables.test.rules /etc/iptables.test.rules"
+    put render("iptables", binding), "iptables.up.rules"
+    sudo "mv iptables.up.rules /etc/iptables.up.rules"
 
     if capture("cat /etc/network/interfaces").grep(/iptables/).empty?
       run %(cat /etc/network/interfaces |
@@ -18,7 +18,12 @@ namespace :iptables do
       sudo "mv interfaces /etc/network/interfaces"
     end
     
-    sudo "iptables-restore < /etc/iptables.test.rules"
+    sudo "iptables-restore < /etc/iptables.up.rules"
     sudo "iptables-save > /etc/iptables.up.rules"
+    
+    put render("iptables-reboot", binding), "iptables_reboot"
+    sudo "mv iptables_reboot /etc/network/if-pre-up.d/iptables_reboot"
+    sudo "chmod +x /etc/network/if-pre-up.d/iptables_reboot"
+    
   end
 end
