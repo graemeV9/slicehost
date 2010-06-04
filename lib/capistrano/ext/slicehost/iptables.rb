@@ -21,7 +21,7 @@ namespace :iptables do
     sudo "iptables-restore < /etc/iptables.up.rules"
     sudo "iptables-save > /etc/iptables.up.rules"
     
-    put render("iptables-reboot", binding), "iptables_reboot"
+    put render("iptables_reboot", binding), "iptables_reboot"
     sudo "mv iptables_reboot /etc/network/if-pre-up.d/iptables_reboot"
     sudo "chmod +x /etc/network/if-pre-up.d/iptables_reboot"
     
