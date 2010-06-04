@@ -11,7 +11,7 @@ namespace :slice do
   
   desc "Provision the server with a full Rails stack"
   task :provision do
-    apache.install
+    apache.setup
     ruby.setup_18
     gems.install_rubygems
     ruby.install_passenger_apache
