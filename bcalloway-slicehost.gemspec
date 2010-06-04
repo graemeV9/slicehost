@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bcalloway-slicehost}
-  s.version = "0.7.0"
+  s.version = "0.7.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joshua Peek, Brandon Calloway"]
@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
      "lib/capistrano/ext/slicehost/ssh.rb",
      "lib/capistrano/ext/slicehost/templates/bashrc.erb",
      "lib/capistrano/ext/slicehost/templates/iptables.erb",
+     "lib/capistrano/ext/slicehost/templates/iptables_reboot.erb",
      "lib/capistrano/ext/slicehost/templates/istatdlauncher.erb",
      "lib/capistrano/ext/slicehost/templates/mydircolors.erb",
      "lib/capistrano/ext/slicehost/templates/nanorc.erb",
