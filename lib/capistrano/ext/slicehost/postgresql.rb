@@ -1,17 +1,17 @@
 namespace :postgresql do
   desc "Restarts PostgreSQL database server"
   task :restart, :roles => :db do
-    sudo "/etc/init.d/postgresql-8.3 restart"
+        sudo "/etc/init.d/postgresql-8.4 restart"
   end
 
   desc "Starts PostgreSQL database server"
   task :start, :roles => :db do
-    sudo "/etc/init.d/postgresql-8.3 start"
+    sudo "/etc/init.d/postgresql-8.4 start"
   end
 
   desc "Stops PostgreSQL database server"
   task :stop, :roles => :db do
-    sudo "/etc/init.d/postgresql-8.3 stop"
+    sudo "/etc/init.d/postgresql-8.4 stop"
   end
 
   desc "Export PostgreSQL database"
